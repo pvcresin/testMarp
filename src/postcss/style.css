@@ -1,0 +1,8 @@
+body {
+	$baseColor: cyan;
+	background: $baseColor;
+	& h1 {
+		color: $baseColor;
+		background: red;
+	}
+}
