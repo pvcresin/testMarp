@@ -8,9 +8,9 @@
 ---
 # 自己紹介
 ## [@pvcresin](https://github.com/pvcresin)
-- M1
-- 想隆社のWEBのフロントエンドを担当
-- 本職はKotlinでAndroid書くマン
+- 明治大学 [宮下研究室](miyashita.com) M1
+- [想隆社](http://soryu-sha.jp/)のWEBのフロントエンドを担当
+- 本職は[Kotlin](https://kotlinlang.org/)でAndroid書くマン
 <!-- page_number: true -->
 
 ---
@@ -22,12 +22,14 @@
 - フロントエンドの開発環境は毎年のように移り変わっていくので，このスライドも 2018/10 にはほぼ使いものにならないでしょう（泣
 
 ---
-# ちなみ
+# ちなみに
 - このスライドは [Marp](https://yhatt.github.io/marp/#) というMarkdownから
-スライドを生成するツールで作成しました（便利）
+スライドを生成するツールで作成しました
+（便利）
 
-- あと今回できるファイルはここに置いておきます
+- あと今回，最終的にできるファイルはここに置いておきます
 https://github.com/pvcresin/testMarp
+適宜見比べて下さい
 
 ---
 # Menu
@@ -37,26 +39,40 @@ https://github.com/pvcresin/testMarp
 - live reload
 - Pug
 - PostCSS
-- JavaScript(es6)
+- JavaScript (es6)
   - webpack + Babel
 
 ---
+# エディタの有名どころ
+- [Sublime Text](https://www.sublimetext.com/)
+	- 「恋に落ちるエディタ」として名高い
+	- 有償だが，無料でも使える
+- [Atom](https://atom.io/) 
+	- Githubが作った
+	- Electron製（JSでデスクトップアプリ作る君）
+- [Brackets](http://brackets.io/)
+	- Adobeが作った
+    - 使ったこと無い
+    
+---
 # Visual Studio Code
 ###### https://code.visualstudio.com/
-- Microsoftが作っているWeb開発に特価したオープンソースのエディタ
+- Microsoftが作ったWeb開発に特価したオープンソースのエディタ
 - Win / Mac / Linux 対応で無料
-- エディタで，Git連携やコマンドラインの機能がデフォルトで入っている
-- 拡張機能の開発が盛んで，今一番熱い感
+- エディタで，Git連携やコマンドラインの機能が
+デフォルトで入っている
+- Electron製
 
 今回はこのエディタを使っていく
+（ちなみに自分の歴史: Sublime ➜ Atom ➜ VScode）
 
 ---
-# Node.js　
+# Node.js
 ###### https://nodejs.jp/
 - サーバサイドで動くJavaScript
 - フロントエンド開発に無くてはならない
 - 偶数バージョンが長期サポートになる
-- 今回は`v8.4.0`を使う（ただの趣味）
+- 今回は`v8.x.x`を使う（ただの趣味）
 
 ---
 # npm
@@ -67,6 +83,7 @@ https://github.com/pvcresin/testMarp
 押されつつある（適当）
 	- 最近はこれを使う人も増えている
     - npmより速い（ときもある）
+    - その他色々優れた点あり
 
 ---
 # npmの使い方
@@ -102,7 +119,7 @@ https://github.com/pvcresin/testMarp
 - `yarn init`=`npm init`
 - `yarn add`=`npm i -S xxx`
 - `yarn add -D xxx`=`npm i -D xxx`
-- `yarn xxx`=`npm run xxx`
+- `yarn xxx`=`yarn run xxx`=`npm run xxx`
 
 今回はYarn使います
 
@@ -124,7 +141,7 @@ https://github.com/pvcresin/testMarp
 を追加
 1. `yarn watch:browser`したら，`dist/index.html`を編集して保存するとブラウザがリロードする
 
-ちなみに出力フォルダ名をよく`dist`にするけど，意味はdistrict（特定の場所）だとか
+ちなみに出力フォルダ名をよく`dist`にするけど，意味は **district（特定の場所）** だとか
 
 ---
 # Pug（旧Jade）
@@ -153,16 +170,15 @@ html(lang="ja")
     ```
 - `yarn build:pug`で１度だけビルド
 - `yarn watch:pug`でファイルの変更を監視（`watch`）
-`src/index.pug`を変更する度，`dist/index.html`に出力
+`src/pug/index.pug`を変更する度，`dist/index.html`に出力
 
 ---
 # `npm-run-all`を使って並列化
-- npm scriptsを複数指定し，順番または並列に処理できる
+- npm scriptを複数指定し，順番または並列に処理できる
 - `run-p build:*`
-	- `build:*`にマッチするnpm scriptsを
-parallelにrunするという意味
+	- `build:*`にマッチするnpm scriptを
+**parallel**に**run**するという意味
 - `yarn add -D npm-run-all`で追加
-
 
 ---
 
@@ -175,10 +191,10 @@ parallelにrunするという意味
 "watch:browser": 
 	"live-server dist --browser=chrome --watch=/"
 ```
-- `yarn build` -> `build:*` -> `build:pug`
-- `yarn watch` -> `watch:*` 
--> `watch:browser` 
--> `watch:pug` -> `build:pug`
+- `yarn build` ➜ `build:*` ➜ `build:pug`
+- `yarn watch` ➜ `watch:*` 
+➜ `watch:browser` 
+➜ `watch:pug` ➜ `build:pug`
 
 ---
 # 休憩
@@ -187,8 +203,9 @@ parallelにrunするという意味
 
 ---
 # PostCSS
+###### http://postcss.org/
 - CSSを楽に書くための新しめのプリプロセッサ
-	- 他にもStylus, LESS, SASSなどがある
+	- 他にも[Stylus](http://stylus-lang.com/), [LESS](http://less-ja.studiomohawk.com/), [SASS(SCSS)](http://sass-lang.com/)などがある
 	- SASSがよく用いられていたが，高機能のため，変換に時間がかかるのが難点だった
 - 欲しい機能をプラグインとして個別に導入が可能
 	- 変数が使いたい, ネストしたい などなど
@@ -198,7 +215,7 @@ parallelにrunするという意味
 - `postcss-cssnext`
 	- まだ導入が進んでいない次世代のCSS記法を先取りして使える
 	- 様々なプラグインの集合体でもある
-		- `Autoprefixer`: ブラウザの差を埋める
+		- `autoprefixer`: ブラウザでの表示差を埋める
 		- `postcss-nesting`: ネストしてCSSをかける
 - `postcss-simple-vars`
 	- SASSのスタイルでcss内に変数を宣言できる
@@ -242,15 +259,17 @@ body h1 {
 
 ---
 # JavaScript（es6）
-- JSの新しい記法 (es6 = es2015)
+- JSの新しい記法 **es6**
+	- ECMA Script6のこと( = es2015)
 - イメージ
-	- レガシー: es5, 最近の: es6, 次の世代: es7
+	- **レガシー: es5, モダン: es6, 次の世代: es7**
 - es6で書いて，es5に変換するのが主流
 	- `Babel`というツールが有名
+		- ブラウザ間の差を埋める機能もついている
  
 ---
 # es6 で変わったところ
-- `let`, `const`の導入
+- `let`, `const`での変数宣言の導入
 	- `let`（再宣言不可）, `const`（再宣言・代入不可）
 - アロー関数
   ```js
@@ -274,7 +293,7 @@ body h1 {
   ```
 - `import` / `export`
 	- `import plus from './plus'`のように，他のJSファイルでexportされた関数などを読み込める
-	- HTMLにおける読み込み順からの開放
+	- HTMLにおけるJSの**読み込み順からの開放**
 	- 機能を **モジュール** ごとに分割し，自由に組み合せることが可能に
 
 ---
@@ -282,7 +301,7 @@ body h1 {
 ###### https://webpack.js.org/
 - 複数のモジュールを1つのファイルにする **バンドラ**
 - JSのみならず，CSSや画像もJSファイルにバンドルすることができ，リクエスト数の削減につながる
-- 今現在，最も存在感の大きい開発ツール
+- 代替品：[Rollup](https://rollupjs.org/), [Browserify](http://browserify.org/), [Fusebox](http://fuse-box.org/)など
 - ちなみに
 	- [Grunt](https://gruntjs.com/), [Gulp](https://gulpjs.com/)といったツールは **タスクランナー** と呼ばれ，先程npm scriptで行ったようなことを中心にサポートするツール（もはや使わん）
 
@@ -341,14 +360,16 @@ module.exports = {
 
 - `src/js/`に`plus.js`と`index.js`を作成 
   ```js
-  export default (x, y) => {  // plus.js
+  // plus.js
+  export default (x, y) => {
       return x + y;
   };
   ```
   ```js
+  // index.js
   import plus from './plus';
 
-  console.log(plus(2, 3));  // index.js -> 5
+  console.log(plus(2, 3));  // -> 5
   ```
 - `src/pug/index.pug`の`body`タグの最後に
 `script(src="js/index.js")`を追加
