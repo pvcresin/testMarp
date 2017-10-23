@@ -8,8 +8,8 @@
 ---
 # 自己紹介
 ## [@pvcresin](https://github.com/pvcresin)
-- 明治大学 [宮下研究室](miyashita.com) M1
-- [想隆社](http://soryu-sha.jp/)のWEBのフロントエンドを担当
+- 明治大学 [宮下研究室](miyashita.com) M1（修士1年）
+- [想隆社](http://soryu-sha.jp/)のWEBフロントエンドを担当
 - 本職は[Kotlin](https://kotlinlang.org/)でAndroid書くマン
 <!-- page_number: true -->
 
@@ -46,51 +46,51 @@ https://github.com/pvcresin/testMarp
 # エディタの有名どころ
 - [Sublime Text](https://www.sublimetext.com/)
 	- 「恋に落ちるエディタ」として名高い
-	- 有償だが，無料でも使える
-- [Atom](https://atom.io/) 
-	- Githubが作った
+	- 有料だが，無料でもフル機能を使える
+- [Atom](https://atom.io/) （by Github）
 	- Electron製（JSでデスクトップアプリ作る君）
-- [Brackets](http://brackets.io/)
-	- Adobeが作った
-    - 使ったこと無い
+	- 拡張が多く公開されているが，動作が重い印象
+- [Brackets](http://brackets.io/)（by Adobe）
+    - ライブプレビューが標準搭載
     
 ---
 # Visual Studio Code
 ###### https://code.visualstudio.com/
-- Microsoftが作ったWeb開発に特価したオープンソースのエディタ
+- Microsoftが作ったWeb開発に特価したエディタ
 - Win / Mac / Linux 対応で無料
-- エディタで，Git連携やコマンドラインの機能が
-デフォルトで入っている
+- Git連携やコマンドラインの機能が標準搭載
 - Electron製
 
 今回はこのエディタを使っていく
-（ちなみに自分の歴史: Sublime ➜ Atom ➜ VScode）
+
+<small>ちなみに自分の場合: Sublime ➜ Atom ➜ VSCode</small>
+<small>Bracketsは使ったこと無い</small>
 
 ---
 # Node.js
 ###### https://nodejs.jp/
 - サーバサイドで動くJavaScript
 - フロントエンド開発に無くてはならない
-- 偶数バージョンが長期サポートになる
+- 偶数バージョンが長期サポート（LTS）になる
 - 今回は`v8.x.x`を使う（ただの趣味）
 
 ---
 # npm
-- Node の Package の Manager 的なやつ
-	- 要はライブラリやフレームワークなどのモジュールを入れるためのツール
+###### https://www.npmjs.com/
+- **Node** の **Package** の **Manager** 的なやつ
+	- 要はライブラリなどを入れるためのツール
 - Node入れたら，だいたいデフォルトで入ってる
 - [Yarn](https://yarnpkg.com/lang/en/)というFacebookが作った上位互換に
 押されつつある（適当）
-	- 最近はこれを使う人も増えている
     - npmより速い（ときもある）
-    - その他色々優れた点あり
+	- 最近はこっちを使う人も増えている
 
 ---
 # npmの使い方
-- `npm init`で`package.json`を作成
+- `npm init`で`package.json`（大事なアレ）を作成
 	- `npm init -y`でとりあえず空のを作ることも可
 - `npm run xxx`で`package.json`の`scripts`に定義した
-コマンドを起動可能
+コマンドを起動可能（ = **npm script** ）
   ```json
   {
     "name": "testMarp",
@@ -105,17 +105,18 @@ https://github.com/pvcresin/testMarp
 
 ---
 # npmの使い方
-- `npm install xxx --save`で`package.json`の`dependencies`（依存関係）にモジュールを追記し，
-`/node_modules`にダウンロード
-	- =`npm i -S xxx`
-- `npm install xxx --dev`で`devDependencies`に追記
-	- =`npm i -D xxx`
-- `npm i`で，`package.json`に書いてある依存モジュールを一気に入れる
+- `npm install --save xxx`=`npm i -S xxx`
+	- `package.json`の`dependencies`（依存関係）にモジュールを追記し，`/node_modules`にダウンロード
+- `npm install --dev xxx`=`npm i -D xxx`
+	- 上の`devDependencies`バージョン
+- `npm i`
+	- `package.json`の依存モジュールを一気に入れる
 	- 例：`git clone`してきたNodeのプロジェクトなど
 
 ---
 # Yarnの使い方
 ###### https://yarnpkg.com/lang/en/
+- `yarn` = `yarn install` = `npm i`
 - `yarn init`=`npm init`
 - `yarn add`=`npm i -S xxx`
 - `yarn add -D xxx`=`npm i -D xxx`
@@ -127,9 +128,9 @@ https://github.com/pvcresin/testMarp
 # live reload
 - ファイルを変更して保存したら，ブラウザを自動でリロードする機能
 - これを実現する色々なパッケージが存在
-	- `live-server`, `browser-sync`などなど
+	- `live-server`, `browser-sync`など
 - ちなみに今どきは，ブラウザをリロードせずに
-変更した部分の要素だけを入れ替える`Hot Module Replacement`という技術がある
+変更した部分の要素だけを入れ替える`Hot Module Replacement`という技術を使う
 	- が今回は難しいので割愛
 
 ---
@@ -140,15 +141,16 @@ https://github.com/pvcresin/testMarp
 `"watch:browser": "live-server dist --browser=chrome --watch=/"`
 を追加
 1. `yarn watch:browser`したら，`dist/index.html`を編集して保存するとブラウザがリロードする
-
-ちなみに出力フォルダ名をよく`dist`にするけど，意味は **district（特定の場所）** だとか
+<small>
+出力フォルダ名をよく`dist`にするけど，**distribution（配布物）** や **district（特定の場所）** という説がある
+</small>
 
 ---
 # Pug（旧Jade）
 ###### https://pugjs.org/
 - HTMLを楽に書くための定番プリプロセッサ
 - インデントで記述
-- パーツごとに分けて記述も可能（`include`）
+- パーツごとに分けて記述可能（`include`）
 ```pug
 doctype html
 html(lang="ja")
@@ -162,27 +164,30 @@ html(lang="ja")
 ---
 # `pug-cli`を使ってみる
 1. `yarn add -D pug-cli`して追加
-1. `src/index.pug`を作成
+1. `src/pug/index.pug`を作成
 1. `scripts`はこんなの
     ```json
     "build:pug": "pug src/pug/index.pug -o dist/ -P",
     "watch:pug": "npm run build:pug -- -w",
     ```
+
 - `yarn build:pug`で１度だけビルド
 - `yarn watch:pug`でファイルの変更を監視（`watch`）
-`src/pug/index.pug`を変更する度，`dist/index.html`に出力
+`src/pug/index.pug`の更新時，`dist/index.html`に出力
 
 ---
 # `npm-run-all`を使って並列化
 - npm scriptを複数指定し，順番または並列に処理できる
 - `run-p build:*`
 	- `build:*`にマッチするnpm scriptを
-**parallel**に**run**するという意味
+**parallel** に **run** するという意味
 - `yarn add -D npm-run-all`で追加
 
 ---
+# `npm-run-all`を使って並列化
 
-さっきの`watch:pug`と`watch:browser`を組み合わせると
+`watch:browser`とさっきの`watch:pug`を組み合わせると
+
 ```json
 "build": "run-p build:*",
 "build:pug": "pug src/pug/index.pug -o dist/ -P",
@@ -208,17 +213,18 @@ html(lang="ja")
 	- 他にも[Stylus](http://stylus-lang.com/), [LESS](http://less-ja.studiomohawk.com/), [SASS(SCSS)](http://sass-lang.com/)などがある
 	- SASSがよく用いられていたが，高機能のため，変換に時間がかかるのが難点だった
 - 欲しい機能をプラグインとして個別に導入が可能
-	- 変数が使いたい, ネストしたい などなど
+	- 変数が使いたい, ネストしたい...などなど
 
 ---
 # PostCSS定番プラグイン
 - `postcss-cssnext`
-	- まだ導入が進んでいない次世代のCSS記法を先取りして使える
+	- まだ導入が進んでいない次世代のCSS記法を
+先取りして使える
 	- 様々なプラグインの集合体でもある
 		- `autoprefixer`: ブラウザでの表示差を埋める
 		- `postcss-nesting`: ネストしてCSSをかける
 - `postcss-simple-vars`
-	- SASSのスタイルでcss内に変数を宣言できる
+	- SASSのスタイルでCSS内に変数を宣言できる
 
 ---
 # `postcss-cli`を使ってみる
@@ -269,7 +275,7 @@ body h1 {
  
 ---
 # es6 で変わったところ
-- `let`, `const`での変数宣言の導入
+- 変数文`let`, `const`の導入
 	- `let`（再宣言不可）, `const`（再宣言・代入不可）
 - アロー関数
   ```js
@@ -288,8 +294,8 @@ body h1 {
 # es6 で変わったところ
 - テンプレート構文
   ```js
-  const name = 'JS';
-  console.log(`My name is ${name}.`); // My name is JS.
+  const name = 'ES6';
+  console.log(`My name is ${name}.`); // My name is ES6.
   ```
 - `import` / `export`
 	- `import plus from './plus'`のように，他のJSファイルでexportされた関数などを読み込める
@@ -303,7 +309,7 @@ body h1 {
 - JSのみならず，CSSや画像もJSファイルにバンドルすることができ，リクエスト数の削減につながる
 - 代替品：[Rollup](https://rollupjs.org/), [Browserify](http://browserify.org/), [Fusebox](http://fuse-box.org/)など
 - ちなみに
-	- [Grunt](https://gruntjs.com/), [Gulp](https://gulpjs.com/)といったツールは **タスクランナー** と呼ばれ，先程npm scriptで行ったようなことを中心にサポートするツール（もはや使わん）
+	- [Grunt](https://gruntjs.com/), [Gulp](https://gulpjs.com/)といったツールは **タスクランナー** と呼ばれ，先程npm scriptで行ったようなことを中心にサポートするツール（最近使わない）
 
 ---
 # `webpack`と`Babel`を使ってみる
@@ -382,16 +388,18 @@ module.exports = {
   "watch:js": "npm run build:js -- -w",
   ```
 - `yarn watch`すると，ブラウザのデベロッパーツールのコンソールに数字が表示されている
-- できたJSファイルは読めたもんじゃないが，よく見るとちゃんと1つのファイルにバンドルされているのが確認できる
+- webpackのせいで，生成されたJSファイルは読めたもんじゃないが，よく見るとちゃんと1つのファイルにバンドルされているのが確認できる
 
 ---
 # 完成
 
 - これでメタな言語や新しい記法のファイルを，HTMLとCSSとJSのファイルに変換し，ライブリロードする環境が整いました
 - あとはそれぞれをいじって学ぶだけです
+- `/node_modules`の中身は**git ignore**しましょう
+（`package.json`さえあれば環境構築はできるので）
 
 ---
 # おわりに
 - お疲れ様でした！
-- ちなみに，この先にスライド中で触れた`Hot Module Replacement`機能や`React`などのView用フレームワーク，ルーターや`Flux`実装，`TypeScript`といったものが見えてくるのですが，書いてる自分の体力が持ちませんでした...
+- ちなみに，この先に`Hot Module Replacement`機能や`React`などのView用フレームワークとルーター，`Flux/Redux`アーキテクチャ，`CSS modules`，`TypeScript`といったものが見えてくるのですが，書いてる自分の体力が持ちませんでした...
 - ここまで来てなんなんですが，どちらかというと，HTML5やCSS3，JSのPromiseとかそこら辺がちゃんと出来たほうが良いと思います
