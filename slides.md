@@ -7,33 +7,40 @@
 
 ---
 # 自己紹介
-## [@pvcresin](https://github.com/pvcresin)
+## @pvcresin
 - 明治大学 [宮下研究室](miyashita.com) M1（修士1年）
-- [想隆社](http://soryu-sha.jp/)のWEBフロントエンドを担当
+- [想隆社](http://soryu-sha.jp/)でWEBのフロントエンドを担当
 - 本職は[Kotlin](https://kotlinlang.org/)でAndroid書くマン
 <!-- page_number: true -->
 
 ---
 # はじめに
-- 最近のフロントエンド開発の第一歩をめちゃくちゃ雑に紹介します（2017/10 地点）
-- 目標は **「へぇ～こういうのもあるんだ～」** 程度
-- 完全に個人的な考えで進めるので，
-全ての言葉には **（諸説あり）** を付けて下さい
-- フロントエンドの開発環境は毎年のように移り変わっていくので，このスライドも 2018/10 にはほぼ使いものにならないでしょう（泣
+- 最近のフロントエンド開発の第一歩をめちゃくちゃ雑に紹介します **（2017/10 現在）**
+- 目標は **「へぇ～こういうのもあるんだ～」**
+- フロントエンドの開発環境は，毎年のように移り変わっていくので，このスライドも 2018/10 にはほぼ使いものにならないでしょう（泣
+
+---
+# 今回使うもの
+- Visual Studio Code
+	- https://code.visualstudio.com/
+- Node.js
+	- https://nodejs.org/ja/
+- Yarn
+	- https://yarnpkg.com/en/docs/install
+
+最新版をインストールしておきましょう
+あとブラウザはChrome使います
 
 ---
 # ちなみに
 - このスライドは [Marp](https://yhatt.github.io/marp/#) というMarkdownから
 スライドを生成するツールで作成しました
-（便利）
-
-- あと今回，最終的にできるファイルはここに置いておきます
+- 今回，最終的にできるファイルはここ⬇
 https://github.com/pvcresin/testMarp
-適宜見比べて下さい
 
 ---
 # Menu
-- VSCode
+- Visual Studio Code
 - Node.js
 	- npm / Yarn
 - live reload
@@ -49,45 +56,45 @@ https://github.com/pvcresin/testMarp
 	- 有料だが，無料でもフル機能を使える
 - [Atom](https://atom.io/) （by Github）
 	- Electron製（JSでデスクトップアプリ作る君）
-	- 拡張が多く公開されているが，動作が重い印象
+	- 拡張が多く公開されている
 - [Brackets](http://brackets.io/)（by Adobe）
     - ライブプレビューが標準搭載
     
 ---
-# Visual Studio Code
-###### https://code.visualstudio.com/
+# [Visual Studio Code](https://code.visualstudio.com/)
 - Microsoftが作ったWeb開発に特価したエディタ
-- Win / Mac / Linux 対応で無料
-- Git連携やコマンドラインの機能が標準搭載
+- OSSで無料
+- Win / Mac / Linux 対応
+- Git連携機能やターミナルが標準搭載
 - Electron製
 
-今回はこのエディタを使っていく
+``Ctrl + ` ``でターミナルが開き，コマンドが使える！
 
-<small>ちなみに自分の場合: Sublime ➜ Atom ➜ VSCode</small>
+<small>自分の場合: Sublime ➜ Atom ➜ VSCode</small>
 <small>Bracketsは使ったこと無い</small>
 
 ---
-# Node.js
-###### https://nodejs.jp/
+# [Node.js](https://nodejs.org/ja/)
 - サーバサイドで動くJavaScript
+- Chrome に搭載されている V8 エンジンで動作
 - フロントエンド開発に無くてはならない
 - 偶数バージョンが長期サポート（LTS）になる
-- 今回は`v8.x.x`を使う（ただの趣味）
+
+`node -v`で動くか確認
 
 ---
-# npm
-###### https://www.npmjs.com/
+# [npm](https://www.npmjs.com/)
 - **Node** の **Package** の **Manager** 的なやつ
 	- 要はライブラリなどを入れるためのツール
 - Node入れたら，だいたいデフォルトで入ってる
-- [Yarn](https://yarnpkg.com/lang/en/)というFacebookが作った上位互換に
-押されつつある（適当）
-    - npmより速い（ときもある）
-	- 最近はこっちを使う人も増えている
+- [Yarn](https://yarnpkg.com/lang/en/)というFacebookが作った上位互換に押されつつある（適当）
+	- npmより速い（ときもある）
+
+`npm -v`で動くか確認
 
 ---
 # npmの使い方
-- `npm init`で`package.json`（大事なアレ）を作成
+- `npm init`で`package.json`（大事なやつ）を作成
 	- `npm init -y`でとりあえず空のを作ることも可
 - `npm run xxx`で`package.json`の`scripts`に定義した
 コマンドを起動可能（ = **npm script** ）
@@ -106,35 +113,33 @@ https://github.com/pvcresin/testMarp
 ---
 # npmの使い方
 - `npm install --save xxx`=`npm i -S xxx`
-	- `package.json`の`dependencies`（依存関係）にモジュールを追記し，`/node_modules`にダウンロード
+	- `package.json`の`dependencies`に依存しているモジュールを追記し，`node_modules`にダウンロード
 - `npm install --dev xxx`=`npm i -D xxx`
 	- 上の`devDependencies`バージョン
-- `npm i`
+- `npm install` = `npm i`
 	- `package.json`の依存モジュールを一気に入れる
 	- 例：`git clone`してきたNodeのプロジェクトなど
 
 ---
-# Yarnの使い方
-###### https://yarnpkg.com/lang/en/
-- `yarn` = `yarn install` = `npm i`
+# [Yarn](https://yarnpkg.com/lang/en/)の使い方
 - `yarn init`=`npm init`
+- `yarn` = `yarn install` = `npm i`
 - `yarn add`=`npm i -S xxx`
 - `yarn add -D xxx`=`npm i -D xxx`
 - `yarn xxx`=`yarn run xxx`=`npm run xxx`
 
-今回はYarn使います
+`yarn -v`で動くか確認
 
 ---
 # live reload
-- ファイルを変更して保存したら，ブラウザを自動でリロードする機能
+- ファイルを変更して保存したら，ブラウザを自動でリロードする技術
 - これを実現する色々なパッケージが存在
 	- `live-server`, `browser-sync`など
-- ちなみに今どきは，ブラウザをリロードせずに
-変更した部分の要素だけを入れ替える`Hot Module Replacement`という技術を使う
+- ブラウザをリロードせずに変更した要素だけを入れ替える`Hot Module Replacement`という技術もある
 	- が今回は難しいので割愛
 
 ---
-# `live-server`を使ってみる
+# [live-server](https://www.npmjs.com/package/live-server)を使ってみる
 1. `yarn add -D live-server`でモジュールを追加
 1. `dist`フォルダを作成し，その中に`index.html`を作成
 1. `scripts`に
@@ -146,23 +151,22 @@ https://github.com/pvcresin/testMarp
 </small>
 
 ---
-# Pug（旧Jade）
-###### https://pugjs.org/
+# [Pug](https://pugjs.org/)（旧Jade）
 - HTMLを楽に書くための定番プリプロセッサ
 - インデントで記述
-- パーツごとに分けて記述可能（`include`）
-```pug
-doctype html
-html(lang="ja")
-  head
-    meta(charset="UTF-8")
-    title Pug
-  body
-    h1 Hello
-```
+  ```pug
+  doctype html
+  html(lang="ja")
+    head
+      meta(charset="UTF-8")
+      title Pug
+    body
+      h1 Hello
+  ```
+- [HTML2Jade](http://html2jade.org/)ってサイトが便利
 
 ---
-# `pug-cli`を使ってみる
+# [pug-cli](https://www.npmjs.com/package/pug-cli)を使ってみる
 1. `yarn add -D pug-cli`して追加
 1. `src/pug/index.pug`を作成
 1. `scripts`はこんなの
@@ -170,21 +174,20 @@ html(lang="ja")
     "build:pug": "pug src/pug/index.pug -o dist/ -P",
     "watch:pug": "npm run build:pug -- -w",
     ```
-
 - `yarn build:pug`で１度だけビルド
 - `yarn watch:pug`でファイルの変更を監視（`watch`）
-`src/pug/index.pug`の更新時，`dist/index.html`に出力
+`src/pug/index.pug`の更新する度に，`dist/index.html`に出力
 
 ---
-# `npm-run-all`を使って並列化
+# [npm-run-all](https://www.npmjs.com/package/npm-run-all)を使って並列化
 - npm scriptを複数指定し，順番または並列に処理できる
-- `run-p build:*`
+- 例 `run-p build:*`
 	- `build:*`にマッチするnpm scriptを
 **parallel** に **run** するという意味
 - `yarn add -D npm-run-all`で追加
 
 ---
-# `npm-run-all`を使って並列化
+# [npm-run-all](https://www.npmjs.com/package/npm-run-all)を使って並列化
 
 `watch:browser`とさっきの`watch:pug`を組み合わせると
 
@@ -203,31 +206,31 @@ html(lang="ja")
 
 ---
 # 休憩
-- これでnpm scriptの基礎は完成
+- これで**npm script**の基礎は完成
 - あとは`build:xxx`と`watch:xxx`を同じように増やしていくことで並列処理を増やしていくことが出来る
 
 ---
-# PostCSS
-###### http://postcss.org/
+# [PostCSS](http://postcss.org/)
 - CSSを楽に書くための新しめのプリプロセッサ
 	- 他にも[Stylus](http://stylus-lang.com/), [LESS](http://less-ja.studiomohawk.com/), [SASS(SCSS)](http://sass-lang.com/)などがある
 	- SASSがよく用いられていたが，高機能のため，変換に時間がかかるのが難点だった
 - 欲しい機能をプラグインとして個別に導入が可能
 	- 変数が使いたい, ネストしたい...などなど
+- [PostCSS.parts](https://www.postcss.parts/)でプラグインの検索が可能（便利）
 
 ---
-# PostCSS定番プラグイン
-- `postcss-cssnext`
+# 個人的によく使うプラグイン
+- [postcss-cssnext](https://github.com/MoOx/postcss-cssnext)
 	- まだ導入が進んでいない次世代のCSS記法を
 先取りして使える
 	- 様々なプラグインの集合体でもある
-		- `autoprefixer`: ブラウザでの表示差を埋める
-		- `postcss-nesting`: ネストしてCSSをかける
-- `postcss-simple-vars`
+		- [autoprefixer](https://github.com/postcss/autoprefixer): ブラウザでの表示差を埋める
+		- [postcss-nesting](https://github.com/jonathantneal/postcss-nesting): ネストしてCSSをかける
+- [postcss-simple-vars](https://github.com/postcss/postcss-simple-vars)
 	- SASSのスタイルでCSS内に変数を宣言できる
 
 ---
-# `postcss-cli`を使ってみる
+# [postcss-cli](https://www.npmjs.com/package/postcss-cli)を使ってみる
 1. `yarn add -D postcss-cli postcss-cssnext postcss-simple-vars`
 1. `src/postcss/style.css`を作成
 1. `scripts`に
@@ -255,7 +258,7 @@ body {  // 変換前のpostcss
 ```
 ```css
 body {  /* 変換後のcss */
-  background: cyan
+  background: cyan;
 }
 body h1 {
   color: cyan;
@@ -265,25 +268,26 @@ body h1 {
 
 ---
 # JavaScript（es6）
-- JSの新しい記法 **es6**
-	- ECMA Script6のこと( = es2015)
+- JSの新しい記法 **es6** ( = es2015)
+	- 正式名称: **ECMA Script6**
 - イメージ
-	- **レガシー: es5, モダン: es6, 次の世代: es7**
+	- **レガシー: es5, モダン: es6, 次世代: es7**
 - es6で書いて，es5に変換するのが主流
-	- `Babel`というツールが有名
+	- [Babel](https://babeljs.io/)というツールが有名
 		- ブラウザ間の差を埋める機能もついている
- 
+	    - 類似品：[Bubble](https://buble.surge.sh/)
+
 ---
 # es6 で変わったところ
-- 変数文`let`, `const`の導入
-	- `let`（再宣言不可）, `const`（再宣言・代入不可）
+- 変数宣言`const`, `let`の導入
+	- `const`（再代入不可）, `let`（再代入可）
 - アロー関数
   ```js
   // 従来の関数
   var plus = function(x, y) {
     return x + y;
   };
-
+  
   // アロー関数
   const plus = (x, y) => {
     return x + y;
@@ -292,35 +296,49 @@ body h1 {
 
 ---
 # es6 で変わったところ
-- テンプレート構文
+- クラス構文
   ```js
-  const name = 'ES6';
-  console.log(`My name is ${name}.`); // My name is ES6.
+  class Person {
+    constructor(name) {
+      this.name = name;
+    };
+    hello() {
+      console.log(`My name is ${this.name}.`);
+    };
+  }
+  
+  const p = new Person('es6');
+  p.hello();	//=> "My name is es6."
   ```
-- `import` / `export`
-	- `import plus from './plus'`のように，他のJSファイルでexportされた関数などを読み込める
-	- HTMLにおけるJSの**読み込み順からの開放**
-	- 機能を **モジュール** ごとに分割し，自由に組み合せることが可能に
 
 ---
-# webpack
-###### https://webpack.js.org/
+# es6 で変わったところ
+- `import` / `export` の導入
+  - 他のJSファイルの関数やクラスを読み込める
+  - 例
+    - **person.js** `export default class Person { }`
+    - **index.js** `import Person from './person';`
+  - 機能を **モジュール** ごとに分割し，自由に組み合せることが可能に
+
+---
+# [webpack](https://webpack.js.org/)
 - 複数のモジュールを1つのファイルにする **バンドラ**
-- JSのみならず，CSSや画像もJSファイルにバンドルすることができ，リクエスト数の削減につながる
+- HTMLにおけるJSの**読み込み順の悩みから開放**
+- CSSや画像もJSファイルにバンドルすることができ，リクエスト数の削減につながる
 - 代替品：[Rollup](https://rollupjs.org/), [Browserify](http://browserify.org/), [Fusebox](http://fuse-box.org/)など
-- ちなみに
-	- [Grunt](https://gruntjs.com/), [Gulp](https://gulpjs.com/)といったツールは **タスクランナー** と呼ばれ，先程npm scriptで行ったようなことを中心にサポートするツール（最近使わない）
+
+[Grunt](https://gruntjs.com/), [Gulp](https://gulpjs.com/)といったツールは **タスクランナー** と呼ばれ，先程 npm script で行ったようなことを中心にサポートするツール（最近使わない）
 
 ---
 # `webpack`と`Babel`を使ってみる
-- `Babel`でes6のJSをes5にし，`webpack`でバンドル
-
+- `Babel`でes6のJSをes5にし，`webpack`でバンドル！
 - モジュールの説明
-  - `babel-core`: `Babel`本体
-  - `babel-preset-es2015`: 変換するためのプリセット
-  - `babel-loader`: `Babel`を`webpack`上であつかう君
-  - `webpack`: `webpack`本体
-- `yarn add -D babel-core babel-loader babel-preset-es2015 webpack`して追加
+  - [babel-core](https://www.npmjs.com/package/babel-core): `Babel`本体
+  - [babel-preset-es2015](https://www.npmjs.com/package/babel-preset-es2015): 変換に使うプリセット
+  - [babel-loader](https://www.npmjs.com/package/babel-loader): `Babel`を`webpack`上で扱う君
+  - [webpack](https://www.npmjs.com/package/webpack): `webpack`本体
+
+`yarn add -D babel-core babel-loader babel-preset-es2015 webpack`
 
 ---
 # webpack + babel
@@ -339,9 +357,8 @@ module.exports = {
     filename: '[name].js'
   },
 ```
+
 ---
-
-
 ```js
   module: {
     loaders: [{
@@ -363,20 +380,29 @@ module.exports = {
 
 ---
 # JSファイル
+- `src/js/`に`person.js`と`index.js`を作成 
 
-- `src/js/`に`plus.js`と`index.js`を作成 
-  ```js
-  // plus.js
-  export default (x, y) => {
-      return x + y;
+`person.js`
+```js
+export default class Person {
+  constructor(name) {
+    this.name = name;
   };
-  ```
-  ```js
-  // index.js
-  import plus from './plus';
+  hello() {
+    console.log(`My name is ${this.name}.`);
+  };
+}
+```
 
-  console.log(plus(2, 3));  // -> 5
-  ```
+---
+# JSファイル
+`index.js`
+```js
+import Person from './person';
+
+const p = new Person('es6');
+p.hello();
+```
 - `src/pug/index.pug`の`body`タグの最後に
 `script(src="js/index.js")`を追加
 
@@ -387,19 +413,24 @@ module.exports = {
   "build:js": "webpack",
   "watch:js": "npm run build:js -- -w",
   ```
-- `yarn watch`すると，ブラウザのデベロッパーツールのコンソールに数字が表示されている
-- webpackのせいで，生成されたJSファイルは読めたもんじゃないが，よく見るとちゃんと1つのファイルにバンドルされているのが確認できる
+- `yarn watch`すると，ブラウザのデベロッパーツールのコンソールに`My name is es6.`が表示される
+- webpackのせいで，生成されたJSファイルは読めたもんじゃないが，よく見るとちゃんと2ファイルが1つにバンドルされているのが確認できる
 
 ---
 # 完成
-
 - これでメタな言語や新しい記法のファイルを，HTMLとCSSとJSのファイルに変換し，ライブリロードする環境が整いました
 - あとはそれぞれをいじって学ぶだけです
-- `/node_modules`の中身は**git ignore**しましょう
+- `node_modules`の中身は**git ignore**しましょう
 （`package.json`さえあれば環境構築はできるので）
 
 ---
-# おわりに
-- お疲れ様でした！
-- ちなみに，この先に`Hot Module Replacement`機能や`React`などのView用フレームワークとルーター，`Flux/Redux`アーキテクチャ，`CSS modules`，`TypeScript`といったものが見えてくるのですが，書いてる自分の体力が持ちませんでした...
-- ここまで来てなんなんですが，どちらかというと，HTML5やCSS3，JSのPromiseとかそこら辺がちゃんと出来たほうが良いと思います
+# お疲れ様でした！
+- Next Step
+`Hot Module Replacement`機能
+Viewフレームワーク: `React`, `Vue`, `Riot`
+ルーター: `React Router`, `vue-router`, `Riot Router`
+アーキテクチャ: `Flux`, `Redux`
+CSS: `CSS modules`
+JSのメタ言語: `TypeScript`
+- ここまで来てなんなんですが，HTML5 や CSS3，JS の **Promise** や **fetch** ら辺がちゃんと出来たほうが良いと思います！
+- おわり！

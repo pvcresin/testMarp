@@ -70,16 +70,18 @@
 "use strict";
 
 
-var _plus = __webpack_require__(1);
+var _person = __webpack_require__(2);
 
-var _plus2 = _interopRequireDefault(_plus);
+var _person2 = _interopRequireDefault(_person);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-console.log((0, _plus2.default)(2, 3));
+var p = new _person2.default('es6');
+p.hello();
 
 /***/ }),
-/* 1 */
+/* 1 */,
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -89,9 +91,28 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-exports.default = function (x, y) {
-	return x + y;
-};
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Person = function () {
+	function Person(name) {
+		_classCallCheck(this, Person);
+
+		this.name = name;
+	}
+
+	_createClass(Person, [{
+		key: "hello",
+		value: function hello() {
+			console.log("My name is " + this.name + ".");
+		}
+	}]);
+
+	return Person;
+}();
+
+exports.default = Person;
 
 /***/ })
 /******/ ]);

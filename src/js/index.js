@@ -1,3 +1,4 @@
-import plus from './plus';
+import Person from './person';
 
-console.log(plus(2, 3));
+const p = new Person('es6');
+p.hello();
