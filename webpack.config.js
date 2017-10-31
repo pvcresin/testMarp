@@ -1,14 +1,8 @@
-const webpack = require('webpack')
-const path = require('path')
-
 module.exports = {
-	context: path.resolve(__dirname, './src/js'),
-	entry: {
-		index: './index.js'
-	},
+	entry: __dirname + '/src/js/index.js',
 	output: {
-		path: path.join(__dirname, 'dist/js/'),
-		filename: '[name].js'
+		path: __dirname + '/dist/js/',
+		filename: 'index.js'
 	},
 	module: {
 		loaders: [{
@@ -19,8 +13,5 @@ module.exports = {
 				presets: ['es2015']
 			}
 		}]
-	},
-	resolve: {
-		extensions: ['.js']
 	}
 }

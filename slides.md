@@ -33,6 +33,7 @@
 
 ---
 # ちなみに
+
 - このスライドは [Marp](https://yhatt.github.io/marp/#) というMarkdownから
 スライドを生成するツールで作成しました
 - 今回，最終的にできるファイルはここ⬇
@@ -55,10 +56,11 @@ https://github.com/pvcresin/testMarp
 	- 「恋に落ちるエディタ」として名高い
 	- 有料だが，無料でもフル機能を使える
 - [Atom](https://atom.io/) （by Github）
-	- Electron製（JSでデスクトップアプリ作る君）
 	- 拡張が多く公開されている
+	- Electron製（JSでデスクトップアプリ作る君）
 - [Brackets](http://brackets.io/)（by Adobe）
     - ライブプレビューが標準搭載
+	- Electron製
     
 ---
 # [Visual Studio Code](https://code.visualstudio.com/)
@@ -341,42 +343,26 @@ body h1 {
 `yarn add -D babel-core babel-loader babel-preset-es2015 webpack`
 
 ---
-# webpack + babel
-- `webpack.config.js`をルートに作成
+# `webpack.config.js`を作成
 ```js
-const webpack = require('webpack')
-const path = require('path')
-
 module.exports = {
-  context: path.resolve(__dirname, './src/js'),
-  entry: {
-    index: './index.js'
-  },
+  entry: __dirname + '/src/js/index.js',
   output: {
-    path: path.join(__dirname, 'dist/js/'),
-    filename: '[name].js'
+    path: __dirname + '/dist/js/',
+    filename: 'index.js'
   },
-```
-
----
-```js
   module: {
     loaders: [{
       test: /\.js$/,
       exclude: /node_modules/,
       loader: 'babel-loader',
       query: {
-        presets: ['es2015']
+      	presets: ['es2015']
       }
     }]
-  },
-  resolve: {
-    extensions: ['.js']
   }
 }
 ```
-少し癖がある＋バージョンによっても書き方が変わる
-ので注意
 
 ---
 # JSファイル
@@ -425,12 +411,12 @@ p.hello();
 
 ---
 # お疲れ様でした！
+- ここまで来てなんなんですが，HTML5 や CSS3，JS の **Promise** や **fetch** ら辺がちゃんと出来たほうが良いと思います！
 - Next Step
 `Hot Module Replacement`機能
 Viewフレームワーク: `React`, `Vue`, `Riot`
 ルーター: `React Router`, `vue-router`, `Riot Router`
-アーキテクチャ: `Flux`, `Redux`
+アーキテクチャ: `Flux`, `Redux`, `Vuex`, `Riot Control`
 CSS: `CSS modules`
 JSのメタ言語: `TypeScript`
-- ここまで来てなんなんですが，HTML5 や CSS3，JS の **Promise** や **fetch** ら辺がちゃんと出来たほうが良いと思います！
 - おわり！
