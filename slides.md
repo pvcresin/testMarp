@@ -59,8 +59,7 @@ https://github.com/pvcresin/testMarp
 	- 拡張が多く公開されている
 	- Electron製（JSでデスクトップアプリ作る君）
 - [Brackets](http://brackets.io/)（by Adobe）
-    - ライブプレビューが標準搭載
-	- Electron製
+    - ライブプレビューが標準搭載でElectron製
     
 ---
 # [Visual Studio Code](https://code.visualstudio.com/)
@@ -70,7 +69,7 @@ https://github.com/pvcresin/testMarp
 - Git連携機能やターミナルが標準搭載
 - Electron製
 
-``Ctrl + ` ``でターミナルが開き，コマンドが使える！
+``Ctrl + @ ``でターミナルが開き，コマンドが使える！
 
 <small>自分の場合: Sublime ➜ Atom ➜ VSCode</small>
 <small>Bracketsは使ったこと無い</small>
@@ -133,6 +132,23 @@ https://github.com/pvcresin/testMarp
 `yarn -v`で動くか確認
 
 ---
+# 今回使うモジュールの準備
+`package.json`の依存モジュールを写し`yarn`する
+```
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "live-server": "^1.2.0",
+    "npm-run-all": "^4.1.1",
+    "postcss-cli": "^4.1.1",
+    "postcss-cssnext": "^3.0.2",
+    "postcss-simple-vars": "^4.1.0",
+    "pug-cli": "^1.0.0-alpha6",
+    "webpack": "^3.7.1"
+  }
+```
+---
 # live reload
 - ファイルを変更して保存したら，ブラウザを自動でリロードする技術
 - これを実現する色々なパッケージが存在
@@ -142,7 +158,6 @@ https://github.com/pvcresin/testMarp
 
 ---
 # [live-server](https://www.npmjs.com/package/live-server)を使ってみる
-1. `yarn add -D live-server`でモジュールを追加
 1. `dist`フォルダを作成し，その中に`index.html`を作成
 1. `scripts`に
 `"watch:browser": "live-server dist --browser=chrome --watch=/"`
@@ -169,7 +184,7 @@ https://github.com/pvcresin/testMarp
 
 ---
 # [pug-cli](https://www.npmjs.com/package/pug-cli)を使ってみる
-1. `yarn add -D pug-cli`して追加
+1. `pug-cli`を使用
 1. `src/pug/index.pug`を作成
 1. `scripts`はこんなの
     ```json
@@ -186,7 +201,6 @@ https://github.com/pvcresin/testMarp
 - 例 `run-p build:*`
 	- `build:*`にマッチするnpm scriptを
 **parallel** に **run** するという意味
-- `yarn add -D npm-run-all`で追加
 
 ---
 # [npm-run-all](https://www.npmjs.com/package/npm-run-all)を使って並列化
@@ -233,7 +247,7 @@ https://github.com/pvcresin/testMarp
 
 ---
 # [postcss-cli](https://www.npmjs.com/package/postcss-cli)を使ってみる
-1. `yarn add -D postcss-cli postcss-cssnext postcss-simple-vars`
+1. `postcss-cli postcss-cssnext postcss-simple-vars`を使用
 1. `src/postcss/style.css`を作成
 1. `scripts`に
 `"build:postcss": "postcss src/postcss/*.css -d dist/css/ --no-map -u postcss-simple-vars postcss-cssnext",`と
@@ -339,8 +353,6 @@ body h1 {
   - [babel-preset-es2015](https://www.npmjs.com/package/babel-preset-es2015): 変換に使うプリセット
   - [babel-loader](https://www.npmjs.com/package/babel-loader): `Babel`を`webpack`上で扱う君
   - [webpack](https://www.npmjs.com/package/webpack): `webpack`本体
-
-`yarn add -D babel-core babel-loader babel-preset-es2015 webpack`
 
 ---
 # `webpack.config.js`を作成
